@@ -27,4 +27,23 @@ CREATE TABLE TB_USUARIO (
 
 );
 
+Código de conexão com o SQL Server
+
+package br.com.fiap.factory;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionFactory {
+
+    private static final String URL = "jdbc:sqlserver://sqlserver.fiap.com.br:1433;databaseName=SeuBancoDeDados";
+    private static final String USER = "rm552325";
+    private static final String PASSWORD = "170904";
+
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+}
  
